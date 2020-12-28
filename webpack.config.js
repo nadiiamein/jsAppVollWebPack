@@ -24,7 +24,26 @@ module.exports = {
                 
               }),
               new CleanWebpackPlugin(),
-        ]
+        ],
+        module:
+        {
+            rules: [
+                {
+                    test: /\.css$/i,
+                    use:
+                     [
+                       {
+                        loader: MiniCssExtractPlugin.loader,
+                         options: {
+                           hmr: isDev
+                         },
+                       },
+                       'css-loader'
+      
+                        ],
+                },
+            ]
+        }
 
 
     };
