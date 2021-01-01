@@ -50,3 +50,8 @@
  .author{
    font-size: 0.8rem;
  }
+ .floating-btn{
+   position: fixed;
+   bottom: 50px;
+   right: 50px;
+ }
