@@ -1,5 +1,5 @@
 import {Question} from './question';
-import { isValid } from './utils';
+import { createModal, isValid } from './utils';
 import './style.css';
 
 
@@ -36,4 +36,7 @@ function submitFormHandler(event) {
     }
 }
 
+function openModal() {
+    createModal('Registrierung','<h1>Test</h1>');
+}
 console.log('App working...');
