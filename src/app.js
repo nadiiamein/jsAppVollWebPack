@@ -4,10 +4,14 @@ import './style.css';
 
 
 const form =document.getElementById('form');
+const modalBtn=document.getElementById('modal-btn
+');
 const input = form.querySelector('#question-input');
 const submitBtn = form.querySelector('#submit');
+
 window.addEventListener('load', Question.renderList);
 form.addEventListener('submit', submitFormHandler);
+modakBtn.addEventListener('click', openModal);
 input.addEventListener('input', () => {
     submitBtn.disabled = !isValid(input.value);
 });
