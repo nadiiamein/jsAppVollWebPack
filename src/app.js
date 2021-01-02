@@ -1,17 +1,17 @@
-import {Question} from './question';
-import { createModal, isValid } from './utils';
+import {Question} from './question.js';
+import {createModal, isValid } from './utils.js';
 import './style.css';
+import { authWithEmailAndPassword, getAuthForm } from './auth.js';
 
 
-const form =document.getElementById('form');
-const modalBtn=document.getElementById('modal-btn
-');
+const form = document.getElementById('form');
+const modalBtn = document.getElementById('modal-btn');
 const input = form.querySelector('#question-input');
 const submitBtn = form.querySelector('#submit');
 
 window.addEventListener('load', Question.renderList);
 form.addEventListener('submit', submitFormHandler);
-modakBtn.addEventListener('click', openModal);
+modalBtn.addEventListener('click', openModal);
 input.addEventListener('input', () => {
     submitBtn.disabled = !isValid(input.value);
 });
@@ -37,6 +37,16 @@ function submitFormHandler(event) {
 }
 
 function openModal() {
-    createModal('Registrierung','<h1>Test</h1>');
+    createModal('Registrierung', getAuthForm());
+    document.getElementById('auth-form')
+    .addEventListener('submit', authFormHandler,{once: true});
+
 }
+function authFormHandler(event) {
+    event.preventDefault();
+
+    const email = event.target.querySelector('#email').value;
+    const password = event.target.querySelector('#password').value;
+authWithEmailAndPassword(email,password);
+    }
 console.log('App working...');

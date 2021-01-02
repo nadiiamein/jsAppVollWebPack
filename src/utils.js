@@ -1,18 +1,19 @@
-import { MultiCompiler } from "webpack";
+export function isValid(value) {
+    return value.length >=10;
+}
 
- export function isValid(value) {
-     return value.length >=10;
- }
+export function createModal(title, content) {
+    const modal = document.createElement('div');
+    modal.classList.add('modal');
 
- export function createModal(title, content) {
-     const modal = document.createElement('div');
-     modal.classList.add('modal');
+    modal.innerHTML = `
+    <h1>${title}</h1>
+    <div class="modal-content">${content}</div>
+    `;
 
-     const html = `
-     <h1>${title}</h1>
-     <div class="modal-content">${content}</div>
-     `
-     modal.innerHTML = html;
+    mui.overlay('on', modal);
+}
 
-     mui.overlay('on', modal);
- }
+
+
+ 

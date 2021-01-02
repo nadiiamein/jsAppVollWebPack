@@ -54,7 +54,7 @@
  .floating-btn {
    position: fixed;
    bottom: -500px;
-   left: 50px;
+   right: -500px;
  }
  .modal{
    max-width: 600px;
@@ -64,7 +64,7 @@
    background: #fff;
  }
 
- .modal h1 {
+ .modal > h1 {
    text-align: center;
  }
  .modal .modal-content {
