@@ -34,5 +34,5 @@ return fetch(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassw
     }
 })
 .then(response => response.json())
-.then(data => console.log(data));
+.then(data => data.idToken);
 }

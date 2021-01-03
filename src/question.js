@@ -15,6 +15,15 @@ export class Question {
         .then(addToLocalStorage)
         .then(Question.renderList);
     }
+
+static fetch(token) {
+     return fetch(`https://jsvollwebpackapp-default-rtdb.europe-west1.firebasedatabase.app/questions.json?auth=${token}`)
+    .then(response => response.json())
+    .then(questions => {
+        console.log('Fragen', questions);
+    });
+}
+
     static renderList() {
         const questions = getQuestionsFormLocalStorage();
         const html = questions.length 
