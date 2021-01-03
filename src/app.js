@@ -45,9 +45,22 @@ function openModal() {
 function authFormHandler(event) {
     event.preventDefault();
 
+    const btn = event.target.querySelector
+    ('button');
     const email = event.target.querySelector('#email').value;
     const password = event.target.querySelector('#password').value;
+
+    btn.disabled =true;
 authWithEmailAndPassword(email,password)
 .then( Question.fetch)
+.then(renderModalAfterAuth)
+.then(() => btn.disabled = false)
     }
-console.log('App working...');
+
+function renderModalAfterAuth(content) {
+    if (typeof content === 'string') {
+        createModal('Error', content)
+    } else {
+        createModal('Alle Ihre Fragen:', Question.listToHTML(content))
+    }
+}

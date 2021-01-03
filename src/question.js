@@ -17,10 +17,19 @@ export class Question {
     }
 
 static fetch(token) {
+    if (!token) {
+        return Promise.resolve('<p class="error">Sie haben keine token</p>')
+    }
      return fetch(`https://jsvollwebpackapp-default-rtdb.europe-west1.firebasedatabase.app/questions.json?auth=${token}`)
     .then(response => response.json())
-    .then(questions => {
-        console.log('Fragen', questions);
+    .then(response => {
+        if (response.error) {
+            return `<p class="error">${response.error}</p>`
+        }
+        return response ?Object.keys(response).map(key => ({
+            ...response[key],
+            id: key
+        })) : []
     });
 }
 
@@ -32,6 +41,12 @@ static fetch(token) {
 
 const list = document.getElementById('list');
 list.innerHTML = html;
+    }
+
+    static listToHTML(questions) {
+        return questions.length
+        ? `<ol>${questions.map(q => `<li>${q.text}</li>`).join('')}</ol>`
+        : '<p>Noch keine Fragen</p>'
     }
 }
 
